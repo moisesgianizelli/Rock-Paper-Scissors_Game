@@ -1,170 +1,248 @@
-/* Estilos Globais */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(
-    to right,
-    #ff7e5f,
-    #feb47b
-  ); /* Degradê de fundo */
+    109.6deg,
+    rgb(0, 0, 0) 11.2%,
+    rgb(11, 132, 145) 91.1%
+  );
 }
 
-/* Container Principal */
 .App {
-  min-height: 100vh; /* Ocupa toda a altura da tela */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white; /* Cor do texto */
+  color: white;
   padding: 20px;
 }
 
-/* Título */
 .heading {
-  font-size: 2.5rem; /* Tamanho da fonte do título */
-  margin-bottom: 20px; /* Margem inferior */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
-/* Estilos para o Placar */
 .score {
   margin-bottom: 20px;
-  font-size: 1.5rem; /* Aumenta o tamanho da fonte do placar */
-  text-align: center; /* Centraliza o texto */
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-/* Estilos para as Escolhas */
 .choices {
-  display: flex; /* Usar flexbox para alinhar as imagens */
-  justify-content: center; /* Centraliza o conteúdo */
-  margin: 20px 0; /* Margem superior e inferior */
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .choice-user,
 .choice-computer {
-  flex: 1; /* Cada uma ocupa o mesmo espaço */
+  flex: 1;
   display: flex;
-  justify-content: center; /* Centraliza a imagem */
-  align-items: center; /* Centraliza verticalmente */
+  justify-content: center;
+  align-items: center;
 }
 
 .user-hand,
 .computer-hand {
-  width: 150px; /* Largura da imagem */
-  height: auto; /* Mantém a proporção */
-  border: 2px solid white; /* Adiciona uma borda branca às imagens */
-  border-radius: 10px; /* Arredonda as bordas */
-  margin: 0 20px; /* Espaçamento entre as imagens */
+  width: 150px;
+  height: auto;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 0 20px;
 }
 
-/* Estilos para os Botões */
 .button-div {
-  display: flex; /* Usar flexbox para alinhar os botões */
-  justify-content: center; /* Centraliza os botões */
-  margin: 20px 0; /* Margem superior e inferior */
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .button {
-  background-color: white; /* Cor de fundo do botão */
-  color: #ff7e5f; /* Cor do texto do botão */
-  border: none; /* Remove a borda padrão do botão */
-  border-radius: 5px; /* Arredonda as bordas do botão */
-  padding: 10px 20px; /* Padding do botão */
-  margin: 0 10px; /* Espaçamento entre os botões */
-  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-  transition: background-color 0.3s; /* Animação suave ao passar o mouse */
+  background-color: white;
+  color: #775fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .button:hover {
-  background-color: #feb47b; /* Altera a cor ao passar o mouse */
-  color: white; /* Altera a cor do texto ao passar o mouse */
+  background-color: #060219;
+  color: white;
 }
 
-/* Estilos para Resultados */
 .result {
-  text-align: center; /* Centraliza o texto de resultado */
-  margin-top: 20px; /* Margem superior */
-  font-size: 1.5rem; /* Aumenta o tamanho da fonte do resultado */
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.5rem;
 }
 
-/* Estilos do Modal */
 .modal-overlay {
-  position: fixed; /* Sobrepõe a tela */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro semi-transparente */
-  display: flex; /* Usar flexbox para centralizar */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-}
-
-.modal {
-  background: white; /* Fundo branco do modal */
-  color: #ff7e5f; /* Cor do texto do modal */
-  padding: 20px;
-  border-radius: 10px; /* Bordas arredondadas */
-  text-align: center; /* Centraliza o texto */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra do modal */
-}
-
-.modal button {
-  margin-top: 10px; /* Margem superior para os botões do modal */
-  padding: 10px 20px; /* Padding do botão */
-  border: none; /* Remove borda */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-  transition: background-color 0.3s; /* Animação suave ao passar o mouse */
-}
-
-.modal button:hover {
-  background-color: #feb47b; /* Altera a cor ao passar o mouse */
-  color: white; /* Altera a cor do texto ao passar o mouse */
-}
-
-/* Estilos da Tela de Login */
-.login-container {
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
-  flex-direction: column; /* Coloca os elementos em coluna */
-  align-items: center; /* Centraliza os elementos */
-  justify-content: center; /* Centraliza verticalmente */
-  width: 100%; /* Largura total */
-  max-width: 400px; /* Largura máxima */
-  margin: 20px; /* Margem */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Fundo branco semi-transparente */
-  border-radius: 10px; /* Bordas arredondadas */
-  padding: 20px; /* Padding */
+  align-items: center;
+  justify-content: center;
 }
 
-.login-container h2 {
-  color: #ff7e5f; /* Cor do texto do título */
-  margin-bottom: 20px; /* Margem inferior */
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.login-container input {
-  padding: 10px; /* Padding */
-  margin-bottom: 20px; /* Margem inferior */
-  width: 100%; /* Largura total */
-  border: 1px solid #ff7e5f; /* Borda */
-  border-radius: 5px; /* Bordas arredondadas */
+.popup-content {
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.login-container button {
-  background-color: #ff7e5f; /* Cor do fundo do botão */
-  color: white; /* Cor do texto do botão */
-  border: none; /* Remove borda */
-  padding: 10px; /* Padding */
-  width: 100%; /* Largura total */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+.popup-content h2 {
+  margin-bottom: 10px;
 }
 
-.login-container button:hover {
-  background-color: #feb47b; /* Altera a cor ao passar o mouse */
+.popup-content button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content .button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.popup-content .button:hover {
+  background-color: #45a049;
+}
+
+.versus-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.player-box,
+.computer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.player-box img,
+.computer-box img {
+  width: 100px;
+  height: 100px;
+}
+
+.versus {
+  font-size: 36px;
+  font-weight: bold;
+  color: red;
+}
+
+.form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.form-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  background-color: #f1f1f1;
+  font-size: 16px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #6c8ff5;
+  background-color: #fff;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #4e83ec;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #3b6edc;
+  transform: translateY(-2px);
+}
+
+.submit-button:active {
+  background-color: #4e83ec;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toggle-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.toggle-link {
+  color: #4e83ec;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.toggle-link:hover {
+  color: #3b6edc;
 }

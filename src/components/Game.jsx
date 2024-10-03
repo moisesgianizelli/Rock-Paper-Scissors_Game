@@ -5,6 +5,23 @@ import Buttons from "./Buttons";
 import Result from "./Result";
 import ResetButton from "./ResetButton";
 
+const GameOverPopup = ({ winner, reset, onSignOut }) => {
+  return (
+    <div className="popup">
+      <div className="popup-content">
+        <h2>Game Over</h2>
+        <p>{winner} wins!</p>
+        <button onClick={reset} className="button">
+          Play Again
+        </button>
+        <button onClick={onSignOut} className="button">
+          Exit
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const Game = ({ user, onSignOut }) => {
   const [userChoice, setUserChoice] = useState("rock");
   const [computerChoice, setComputerChoice] = useState("rock");
@@ -13,6 +30,7 @@ const Game = ({ user, onSignOut }) => {
   const [turnResult, setTurnResult] = useState(null);
   const [result, setResult] = useState("Who wins");
   const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState(null);
 
   const choices = ["rock", "paper", "scissors"];
 
@@ -45,7 +63,6 @@ const Game = ({ user, onSignOut }) => {
   };
 
   const reset = () => {
-    // Resetar os pontos e estados para o início do jogo
     setUserPoints(0);
     setComputerPoints(0);
     setUserChoice("rock");
@@ -53,11 +70,11 @@ const Game = ({ user, onSignOut }) => {
     setTurnResult(null);
     setResult("Who wins");
     setGameOver(false);
+    setWinner(null);
   };
 
   useEffect(() => {
-    // Verifica a pontuação e atualiza o resultado
-    if (userPoints < 10 && computerPoints < 10) {
+    if (!gameOver) {
       const roundResult = resultsMap[userChoice][computerChoice];
       setTurnResult(roundResult);
 
@@ -67,6 +84,7 @@ const Game = ({ user, onSignOut }) => {
         if (updatedUserPoints === 10) {
           setGameOver(true);
           setResult("User wins");
+          setWinner("User");
         }
       } else if (roundResult.includes("Computer got the point")) {
         const updatedComputerPoints = computerPoints + 1;
@@ -74,39 +92,50 @@ const Game = ({ user, onSignOut }) => {
         if (updatedComputerPoints === 10) {
           setGameOver(true);
           setResult("Computer wins");
+          setWinner("Computer");
         }
       }
-    } else if (userPoints === 10 && computerPoints === 10) {
-      // Lógica para jogar novamente em caso de empate
-      setResult("It's a tie! Play again.");
-      reset(); // Reseta o jogo após o empate para permitir nova partida
     }
-  }, [userChoice, computerChoice]); // Mantivemos userPoints e computerPoints como dependências
+  }, [userChoice, computerChoice, gameOver]);
 
   return (
     <div className="App">
       <h1 className="heading">Rock Paper Scissors</h1>
       <h2>Welcome, {user}!</h2>
       <ScoreBoard userPoints={userPoints} computerPoints={computerPoints} />
-      <div className="choices">
-        <div className="choice-user">
+
+      <div className="versus-container">
+        <div className="player-box">
+          <h3>{user}</h3>
           <img
             className="user-hand"
             src={`../images/${userChoice}.jpeg`}
             alt={`User choice: ${userChoice}`}
           />
         </div>
-        <div className="choice-computer">
+
+        <div className="versus">
+          <h2>X</h2>
+        </div>
+
+        <div className="computer-box">
+          <h3>Computer</h3>
           <img
             className="computer-hand"
             src={`../images/${computerChoice}.jpeg`}
             alt={`Computer choice: ${computerChoice}`}
+            style={{ transform: "scaleX(-1)" }}
           />
         </div>
       </div>
+
       <Buttons choices={choices} handleOnClick={handleOnClick} />
       <Result turnResult={turnResult} result={result} />
-      <ResetButton gameOver={gameOver} reset={reset} />
+
+      {gameOver && (
+        <GameOverPopup winner={winner} reset={reset} onSignOut={onSignOut} />
+      )}
+
       <button onClick={onSignOut} className="button">
         Logout
       </button>

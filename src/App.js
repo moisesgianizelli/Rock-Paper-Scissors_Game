@@ -1,32 +1,33 @@
 import React, { useState } from "react";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
-import Game from "./components/Game"; // Importa o componente Game
+import Game from "./components/Game";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
 
   const handleSignUp = (username) => {
-    setUser(username); // Atualiza o estado do usuário
+    setUser(username);
   };
 
   const handleSignIn = (username) => {
-    setUser(username); // Atualiza o estado do usuário
+    setUser(username);
   };
 
   const handleSignOut = () => {
-    setUser(null); // Limpa o estado do usuário
+    setUser(null);
   };
 
   return (
     <div className="App">
       {!user ? (
         <>
-          <SignUp onSignUp={handleSignUp} />
+          {/* <SignUp onSignUp={handleSignUp} /> */}
           <SignIn onSignIn={handleSignIn} />
         </>
       ) : (
-        <Game user={user} onSignOut={handleSignOut} /> // Passa o usuário autenticado para o jogo
+        <Game user={user} onSignOut={handleSignOut} />
       )}
     </div>
   );

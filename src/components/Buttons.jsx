@@ -3,7 +3,7 @@ const Buttons = ({ choices, handleOnClick }) => {
     <div className="button-div">
       {choices.map((choice, index) => (
         <button
-          className="btn btn-secondary m-2" // Adicione estilos do Bootstrap
+          className="btn btn-secondary m-2"
           key={index}
           onClick={() => handleOnClick(choice)}
         >
